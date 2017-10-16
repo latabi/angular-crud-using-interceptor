@@ -1,0 +1,130 @@
+<form  class="form-horizontal lapata" [formGroup]="Myform" (ngSubmit)="onSubmit(Myform.value)">
+<h1> Registration form</h1>
+
+<div class ="form-group">
+    <label for="id"> id </label>
+    <input
+    formControlName="id"
+    id="id"
+    type="text"
+    class="form-control">
+    <!--<div *ngIf="id.touched&&id.invalid" class="alert alert-danger">-->
+      <!--<div *ngIf="id.errors.required">id is required</div>-->
+<!--  -->
+      </div>
+     
+         
+ 
+
+
+  <div class ="form-group">
+    <label for="username"> UserName </label>
+    <input
+    formControlName="username"
+    id="username"
+    type="text"
+    class="form-control">
+     <div *ngIf="username.touched&&username.invalid" class="alert alert-danger">
+      <div *ngIf="username.errors.required">username is required</div>
+         <!--<div *ngIf="username.errors.minlength">minLength is {{username.errors.minlength.requiredLength}}</div>-->
+      <!--</div>-->
+  </div>
+  <div class ="form-group ">
+    <label for="password"> Password </label>
+    <input
+    formControlName="password"
+    id="password"
+    type="text"
+    class="form-control">
+     <div *ngIf="password.touched&&password.invalid" class="alert alert-danger">
+      <div *ngIf="password.errors.required">password is required</div>
+    
+      <div *ngIf="password.errors.minLength">password minlength is {{username.errors.minlength.requiredlength}}</div>
+      </div>
+    <button class="btn btn-success" [disabled]="!Myform.valid">Submit </button>
+    
+  <a routerLink="./tablecrud" routerLinkActive="active" >Register here  </a>
+  </div>
+  </div>
+</form>  
+<!--<div  >
+   <table class="table table-bordered ">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>username</th>
+      <th>password</th>
+       <th>actions</th>
+     
+    </tr>
+  </thead>
+  <tbody *ngFor="let post of posts" >
+  <tr scope="row"> 
+        <td>{{post.id}}</td>
+        <td>{{post.username}} </td> 
+        <td>{{post.password}}</td>  
+     
+        <td>
+        
+          <button type="button" value="Update" class="btn btn-warning"  (click)='openModalForEdit(updatemember,post)'>Update</button>  
+         <ng-template #updatemember>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Updating Current Member</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+        <form  class="form-horizontal" [formGroup]="Myform" (ngSubmit)="submitFormForEdit(Myform.value)">
+  
+   <div class="form-group">
+      <div class="col-sm-12">
+        <label class="control-label">UserName</label>
+        <input type="text" id="username" [(ngModel)]="post.username" class="form-control" formControlName="username">
+     </div>
+  </div>
+  <div class="form-group">
+      <div class="col-sm-12">
+        <label class="control-label">Password</label>
+        <input type="email" id="password" [(ngModel)]="post.password" class="form-control" formControlName="password">
+      </div>
+  </div>
+      <button type="submit" class="btn btn-success"(click)="modalRef.hide()" > Submit</button>
+</form>
+  </div>
+</ng-template>
+        <button type="button" value="Delete" class="btn btn-danger" (click)='openModalforDelete(deletemember,post);'>Delete</button> 
+        
+        
+        
+          <ng-template #deletemember>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Deleting Current User</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+     <form  class="form-horizontal" [formGroup]="Myform" (ngSubmit)="delete(Myform.value)">
+ 
+  <div class="modal-body">
+    Do You want to delete this member?
+ 
+       
+       <textarea cols="20" rows="20"  style="display:none;" [(ngModel)]="post.id" class="form-control" formControlName="id" ></textarea>
+        </div>
+         <div class="submitbtn">
+     <button type="submit"  class="btn btn-danger" (click)="modalRef.hide()">Delete</button>  
+
+  </div>
+    </form>
+</ng-template>
+
+        </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>-->
+ <!--<a routerLink="./tablecrud" routerLinkActive="active"><button class="btn btn-success " >register</button> Register</a>-->
+
+<router-outlet></router-outlet>
